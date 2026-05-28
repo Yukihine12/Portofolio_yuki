@@ -16,6 +16,9 @@ FE/dist/
 FE/build/
 .next/
 out/
+brainstorm
+building
+instruction
 
 # Log files
 *.log
@@ -23,8 +26,3 @@ out/
 # OS generated files
 .DS_Store
 Thumbs.db
-
-# (Opsional) Folder catatan pribadi, hapus tanda '#' jika tidak ingin diupload
-# brainstorm/
-# building/
-# Instruction/
