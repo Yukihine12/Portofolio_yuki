@@ -1,0 +1,21 @@
+{
+  "formal": [
+    {
+      "institution": "UIN Sunan Gunung Djati Bandung",
+      "degree": "Bachelor of Engineering in Informatics Engineering (GPA: 3.82)",
+      "period": "Aug 2022 – Sep 2026"
+    },
+    {
+      "institution": "Mafaza Indonesia Boarding School Garut",
+      "degree": "High School Diploma",
+      "period": "Jan 2019 – Jan 2022"
+    }
+  ],
+  "non_formal": [
+    {
+      "program": "Bangkit Academy",
+      "path": "Cloud Computing Learning Path",
+      "period": "Sep 2024 – Des 2024"
+    }
+  ]
+}

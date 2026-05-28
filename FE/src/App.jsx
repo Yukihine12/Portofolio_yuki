@@ -12,8 +12,13 @@ import {
   ChevronRight,
   FileText
 } from 'lucide-react';
-
-const API_BASE = import.meta.env.DEV ? 'http://localhost:5000' : '';
+import { supabase } from './supabaseClient';
+import fallbackProfile from './fallbacks/profile.json';
+import fallbackSkills from './fallbacks/skills.json';
+import fallbackEducation from './fallbacks/education.json';
+import fallbackCertifications from './fallbacks/certifications.json';
+import fallbackExperience from './fallbacks/experience.json';
+import fallbackProjects from './fallbacks/projects.json';
 
 // --- INTRO ANIMATION COMPONENT ---
 const IntroAnimation = ({ onComplete }) => {
@@ -72,25 +77,59 @@ function App() {
   const [selectedCert, setSelectedCert] = useState(null);
 
   // Fetch compiled data
+  // Fetch compiled data from Supabase, with local JSON fallback
   useEffect(() => {
-    fetch(`${API_BASE}/api/portfolio-data`)
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch portfolio data');
-        return res.json();
-      })
-      .then(json => {
-        if (json.success) {
-          setPortfolioData(json.data);
-        } else {
-          throw new Error(json.message || 'Error occurred');
+    const fetchData = async () => {
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+      if (!supabaseUrl || !supabaseAnonKey) {
+        console.warn('Supabase credentials not found. Falling back to local JSON data.');
+        setPortfolioData({
+          profile: fallbackProfile,
+          skills: fallbackSkills,
+          education: fallbackEducation,
+          certifications: fallbackCertifications,
+          experience: fallbackExperience,
+          projects: fallbackProjects
+        });
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from('portfolio_data')
+          .select('*');
+        
+        if (error) throw error;
+        
+        if (!data || data.length === 0) {
+          throw new Error('No data found in portfolio_data table.');
         }
+
+        const formattedData = data.reduce((acc, curr) => {
+          acc[curr.key] = curr.value;
+          return acc;
+        }, {});
+
+        setPortfolioData(formattedData);
         setLoading(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setError(err.message);
+      } catch (err) {
+        console.error('Supabase fetch failed, falling back to local JSON:', err);
+        setPortfolioData({
+          profile: fallbackProfile,
+          skills: fallbackSkills,
+          education: fallbackEducation,
+          certifications: fallbackCertifications,
+          experience: fallbackExperience,
+          projects: fallbackProjects
+        });
         setLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   const handleIntroComplete = () => {
