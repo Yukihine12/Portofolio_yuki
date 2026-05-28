@@ -175,7 +175,7 @@ p {
 
 /* 🏷️ TABS NAVIGATION SYSTEM */
 .tabs-navigation {
-  display: flex;
+  display: none; /* Hidden on desktop since the navbar handles tab switching */
   justify-content: center;
   gap: 12px;
   margin-bottom: 40px;
@@ -298,6 +298,7 @@ p {
   height: 280px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 20%;
   border: 3px solid rgba(59, 130, 246, 0.25);
   z-index: 1;
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
@@ -817,6 +818,7 @@ p {
   }
   
   .tabs-navigation {
+    display: flex; /* Show on mobile since navbar links are hidden */
     width: 100%;
     overflow-x: auto;
     justify-content: flex-start;
@@ -828,3 +830,98 @@ p {
     font-size: 0.85rem;
   }
 }
+
+/* 🧭 NAVBAR STYLES */
+.navbar {
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  margin-bottom: 40px;
+  border-radius: 50px !important; /* Force pill shape */
+  background: rgba(13, 20, 38, 0.6) !important;
+  border: 1px solid var(--border-card) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 1.5px solid var(--accent-cyan);
+}
+
+.navbar-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 16px;
+}
+
+.navbar-links button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: var(--transition-smooth);
+}
+
+.navbar-links button:hover, .navbar-links button.active {
+  color: var(--accent-cyan);
+}
+
+.navbar-links button.active {
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.btn-replay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-replay:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* Hide navbar tabs on mobile since we have tab-navigation below anyway */
+  }
+}
+

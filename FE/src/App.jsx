@@ -24,13 +24,13 @@ const IntroAnimation = ({ onComplete }) => {
     if (index >= words.length) {
       const timer = setTimeout(() => {
         onComplete();
-      }, 600);
+      }, 800);
       return () => clearTimeout(timer);
     }
 
     const wordTimer = setTimeout(() => {
       setIndex(prev => prev + 1);
-    }, 400);
+    }, 1200);
 
     return () => clearTimeout(wordTimer);
   }, [index]);
@@ -47,10 +47,9 @@ const IntroAnimation = ({ onComplete }) => {
               initial={{ opacity: 0, y: 15, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -15, scale: 1.05 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               <h1 className="intro-title gradient-accent-text">{words[index]}</h1>
-              <p className="intro-subtitle">Initialize Portfolio Engine v2.0</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -129,6 +128,38 @@ function App() {
     }
   };
 
+  const getSkillIcon = (skillName) => {
+    const name = skillName.toLowerCase();
+    if (name.includes('google cloud') || name.includes('gcp')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg';
+    if (name.includes('docker')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg';
+    if (name.includes('kubernetes')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg';
+    if (name.includes('terraform')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg';
+    if (name.includes('vercel')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg';
+    if (name.includes('heroku')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/heroku/heroku-original.svg';
+    if (name.includes('html')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg';
+    if (name.includes('css')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg';
+    if (name.includes('tailwind')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg';
+    if (name.includes('react')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg';
+    if (name.includes('node.js') || name.includes('nodejs')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg';
+    if (name.includes('hapi')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg'; // Fallback to Node
+    if (name.includes('rest api')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg';
+    if (name.includes('express')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg';
+    if (name.includes('python')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg';
+    if (name.includes('supabase')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg';
+    if (name.includes('javascript') || name.includes('js')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg';
+    if (name.includes('postgresql')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg';
+    if (name.includes('mysql')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg';
+    if (name.includes('mariadb')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mariadb/mariadb-original.svg';
+    if (name.includes('firestore') || name.includes('firebase')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg';
+    if (name.includes('mongodb')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg';
+    if (name.includes('linux')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg';
+    if (name.includes('monitoring') || name.includes('prometheus') || name.includes('grafana')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prometheus/prometheus-original.svg';
+    if (name.includes('ci/cd')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg';
+    if (name.includes('git')) return 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg';
+    return null;
+  };
+
+
   if (showIntro) {
     return <IntroAnimation onComplete={handleIntroComplete} />;
   }
@@ -167,6 +198,30 @@ function App() {
 
   return (
     <div className="container">
+      {/* 🧭 NAVIGATION BAR */}
+      <nav className="navbar glass-card">
+        <div className="navbar-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <img src={profile.avatar_url} alt="Logo" className="navbar-avatar" />
+          <span className="navbar-name gradient-accent-text">MHA</span>
+        </div>
+        <div className="navbar-links">
+          <button onClick={() => setActiveTab('skills')} className={activeTab === 'skills' ? 'active' : ''}>Skills</button>
+          <button onClick={() => setActiveTab('education')} className={activeTab === 'education' ? 'active' : ''}>Education</button>
+          <button onClick={() => setActiveTab('projects')} className={activeTab === 'projects' ? 'active' : ''}>Projects</button>
+          <button onClick={() => setActiveTab('certifications')} className={activeTab === 'certifications' ? 'active' : ''}>Certifications</button>
+        </div>
+        <button onClick={() => {
+          sessionStorage.removeItem('visited');
+          setShowIntro(true);
+        }} className="btn-replay" title="Replay Intro Animation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-rotate-ccw">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+          </svg>
+          Replay
+        </button>
+      </nav>
+
       {/* 🚀 HERO SECTION */}
       <section className="hero-grid">
         <div className="hero-info">
@@ -247,9 +302,15 @@ function App() {
                         {category.replace('_', ' & ').toUpperCase()}
                       </h3>
                       <div className="skills-list">
-                        {items.map((skill, sIdx) => (
-                          <span key={sIdx} className="skill-tag">{skill}</span>
-                        ))}
+                        {items.map((skill, sIdx) => {
+                          const iconUrl = getSkillIcon(skill);
+                          return (
+                            <span key={sIdx} className="skill-tag" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              {iconUrl && <img src={iconUrl} alt={skill} style={{ width: '20px', height: '20px' }} />}
+                              {skill}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   ))}
@@ -373,7 +434,7 @@ function App() {
           <p className="contact-subtitle">I'm currently looking for new opportunities and collaborations. Let's build something scalable together!</p>
           <div className="contact-buttons">
             <a 
-              href={`https://wa.me/6281234567890?text=Halo%20Muqtada%2C%20saya%20melihat%20portofolio%20Anda%20dan%20tertarik%20untuk%20berkolaborasi.`} 
+              href={`https://wa.me/6285158982966?text=Halo%20Muqtada%2C%20saya%20melihat%20portofolio%20Anda%20dan%20tertarik%20untuk%20berkolaborasi.`} 
               target="_blank" 
               rel="noreferrer" 
               className="btn-primary"
@@ -381,10 +442,11 @@ function App() {
               <MessageSquare size={18} /> Chat via WhatsApp
             </a>
             <a 
-              href="mailto:muqtadahasby@gmail.com" 
+              href="mailto:muqtadahasbyabdalla@gmail.com?subject=Collaboration%20Inquiry" 
               className="btn-secondary"
+              title="Email: muqtadahasbyabdalla@gmail.com"
             >
-              <Mail size={18} /> Send an Email
+              <Mail size={18} /> muqtadahasbyabdalla@gmail.com
             </a>
           </div>
         </div>

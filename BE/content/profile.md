@@ -32,7 +32,6 @@ cv_download_url: "https://gjjdvuotkuexfzcqgduy.supabase.co/storage/v1/object/pub
 # ==========================================
 about_me:
   description: |
-    Halo! Saya adalah seorang final-year Informatics Engineering student di UIN Sunan Gunung Djati Bandung yang berfokus pada arsitektur backend, cloud infrastructure, dan data engineering. Perjalanan tech saya diperkuat melalui program Bangkit Academy (Cloud Computing) dan sertifikasi internasional Certified International Specialist in Data Engineering (CISDE) dari PASAS Institute, Singapore.
-    
-    Saya senang memecahkan masalah kompleks, mulai dari melakukan refactoring server monolitik menjadi microservices, hingga merancang pipeline ETL (Extract, Transform, Load) untuk pengelolaan data berkualitas tinggi. Di luar coding, saya aktif berkontribusi dalam komunitas developer untuk terus mengasah kemampuan kolaborasi dan engineering saya.
+    A final-year Informatics Engineering student at UIN Sunan Gunung Djati Bandung, specializing in backend architecture, cloud infrastructure, and data engineering. His technical foundation is backed by Bangkit Academy (Cloud Computing) and an international certification as a Certified International Specialist in Data Engineering (CISDE) from the PASAS Institute, Singapore.
+    Passionate about solving complex architectural puzzles, he has hands-on experience refactoring monolithic servers into scalable microservices and designing robust ETL pipelines for high-quality data management. Dedicated to continuous growth, he actively contributes to developer communities to refine his collaboration and engineering expertise.
 ---
