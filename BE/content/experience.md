@@ -1,9 +1,23 @@
 ---
+  - title: "Google Fasilitator"
+    company: "Google Arcade"
+    date: "July – September 2026"
+    desc: "
+            1.	Guided and motivated a cohort of participants to consistently achieve monthly milestones and earn skill badges in the Google Cloud Arcade program.
+            2.	Provided technical troubleshooting and step-by-step guidance for participants completing hands-on labs on the Google Cloud Skills Boost platform.
+            3.	Simplified complex Google Cloud Platform (GCP) concepts, such as cloud infrastructure and deployment, helping participants resolve lab errors efficiently.
+            4.	Monitored participant progress and implemented proactive engagement strategies to maximize monthly badge completion rates."
   - title: "Member"
     company: "SABIT Community"
     date: "Mei 2026 – Present"
     desc: "
             1.	Actively collaborating within the developer community to design and build scalable backend systems and APIs for mobile applications."
+  - title: "Freelance Backend & Data Engineer"
+    company: "FastWork"
+    date: "2025 – Present"
+    desc: "
+            1.	Designed relational databases and developed backend services and REST APIs using Node.js, translating client requirements into scalable and maintainable solutions. 
+            2.	Built data engineering solutions including ETL pipelines, data transformation, and database integration to process and organize data for client requirements."
   - title: "Head of KKN Group "
     company: "Sisdamas UIN Sunan Gunung Djati"
     date: "Jun - Jul 2025"

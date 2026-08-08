@@ -1,5 +1,12 @@
 ---
 projects:
+  - title: "SABITCloud — Infrastructure as a Service by SABIT (Ongoing)"
+    tech: ["Next.js", "Google Cloud Platform", "Kubernetes", Linux(Ubuntu), "Docker"]
+    desc: " 
+            1. Developed and containerized a scalable RESTful API utilizing the Hapi Framework (Node.js) and Docker.
+            2. Deployed the containerized backend to Google Cloud Run, establishing a highly scalable, serverless architecture.
+            3. Integrated a TensorFlow Machine Learning model onto GCP, enabling seamless inference communication between the model and the mobile front-end via the API.
+            4. Utilized Cloud Firestore to securely manage and store structured user profiles, authentication logs, and ML-related data."
   - title: "Moodara — Menstrual Wellness Tracker (Full-Stack)"
     tech: ["React", "Supabase PostgreSQL", "Gemini API"]
     desc: " 
@@ -9,7 +16,7 @@ projects:
             4. Implemented deterministic prediction algorithms for menstrual cycles, ovulation windows, and hormonal phase tracking."
 
   - title: "Microservices Architecture Research (Thesis Project)"
-    tech: ["Docker", "Grafana"]
+    tech: ["Docker", "Grafana", "Moodle"]
     desc: " 
             1. Designed a conceptual migration blueprint to refactor a monolithic Moodle server into a scalable  microservices architecture.
             2. Utilized Docker and Kubernetes for service containerization and explored RabbitMQ for implementing asynchronous message brokering between backend services."

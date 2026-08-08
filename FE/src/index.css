@@ -5,19 +5,19 @@
   --bg-card: rgba(13, 20, 38, 0.45);
   --border-card: rgba(59, 130, 246, 0.12);
   --border-card-hover: rgba(0, 240, 255, 0.35);
-  
+
   --text-primary: #f3f4f6;
   --text-secondary: #9ca3af;
   --text-muted: #6b7280;
-  
+
   --accent-cyan: #00F0FF;
   --accent-blue: #3B82F6;
   --accent-blue-glow: rgba(59, 130, 246, 0.15);
   --accent-cyan-glow: rgba(0, 240, 255, 0.1);
-  
+
   --font-sans: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  
+
   --shadow-neon: 0 0 20px rgba(0, 240, 255, 0.15);
   --shadow-blue: 0 0 20px rgba(59, 130, 246, 0.2);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -27,13 +27,16 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-blue);
 }
@@ -48,7 +51,7 @@
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
-  background-image: 
+  background-image:
     radial-gradient(circle at 50% 25%, #081229 0%, #030712 70%),
     radial-gradient(circle at 10% 70%, #06112c 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, #051634 0%, transparent 40%);
@@ -76,7 +79,10 @@ body {
 }
 
 /* 📝 TYPOGRAPHY & GRADIENTS */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -120,7 +126,7 @@ p {
   right: 0;
   bottom: 0;
   background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   background-position: center;
   mask-image: radial-gradient(circle, black, transparent 80%);
@@ -168,14 +174,15 @@ p {
 
 .glass-card:hover {
   border-color: var(--border-card-hover);
-  box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.08), 
-              0 1px 0 0 rgba(0, 240, 255, 0.1) inset;
+  box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.08),
+    0 1px 0 0 rgba(0, 240, 255, 0.1) inset;
   transform: translateY(-2px);
 }
 
 /* 🏷️ TABS NAVIGATION SYSTEM */
 .tabs-navigation {
-  display: none; /* Hidden on desktop since the navbar handles tab switching */
+  display: none;
+  /* Hidden on desktop since the navbar handles tab switching */
   justify-content: center;
   gap: 12px;
   margin-bottom: 40px;
@@ -797,34 +804,35 @@ p {
     gap: 40px;
     text-align: center;
   }
-  
+
   .hero-avatar-wrapper {
     order: -1;
   }
-  
+
   .hero-quote {
     border-left: none;
     border-top: 2px solid var(--accent-cyan);
     padding-left: 0;
     padding-top: 12px;
   }
-  
+
   .hero-socials {
     justify-content: center;
   }
-  
+
   .hero-name {
     font-size: 2.8rem;
   }
-  
+
   .tabs-navigation {
-    display: flex; /* Show on mobile since navbar links are hidden */
+    display: flex;
+    /* Show on mobile since navbar links are hidden */
     width: 100%;
     overflow-x: auto;
     justify-content: flex-start;
     padding: 6px 12px;
   }
-  
+
   .tab-btn {
     padding: 8px 18px;
     font-size: 0.85rem;
@@ -841,7 +849,8 @@ p {
   align-items: center;
   padding: 12px 24px;
   margin-bottom: 40px;
-  border-radius: 50px !important; /* Force pill shape */
+  border-radius: 50px !important;
+  /* Force pill shape */
   background: rgba(13, 20, 38, 0.6) !important;
   border: 1px solid var(--border-card) !important;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
@@ -889,7 +898,8 @@ p {
   transition: var(--transition-smooth);
 }
 
-.navbar-links button:hover, .navbar-links button.active {
+.navbar-links button:hover,
+.navbar-links button.active {
   color: var(--accent-cyan);
 }
 
@@ -921,7 +931,7 @@ p {
 
 @media (max-width: 768px) {
   .navbar-links {
-    display: none; /* Hide navbar tabs on mobile since we have tab-navigation below anyway */
+    display: none;
+    /* Hide navbar tabs on mobile since we have tab-navigation below anyway */
   }
 }
-

@@ -1,8 +1,8 @@
 ---
 formal:
   - institution: "UIN Sunan Gunung Djati Bandung"
-    degree: "Bachelor of Engineering in Informatics Engineering (GPA: 3.82)"
-    period: "Aug 2022 – Sep 2026" 
+    degree: "Bachelor of Engineering in Informatics Engineering (GPA: 3.83)"
+    period: "Aug 2022 – Jul 2026" 
   - institution: "Mafaza Indonesia Boarding School Garut"
     degree: "High School Diploma"
     period: "Jan 2019 – Jan 2022" 

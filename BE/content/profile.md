@@ -4,7 +4,7 @@
 # ==========================================
 name: "Muqtada Hasby Abdalla"
 title: "Cloud, Backend, and Data Engineer"
-avatar_url: "https://gjjdvuotkuexfzcqgduy.supabase.co/storage/v1/object/public/Profile/Muqtada%20Hasby%20A.jpg" 
+avatar_url: "https://lh3.googleusercontent.com/d/1qzceh6D30gl5AU3BjFGSs7wW4SoLYBMY" 
 
 # Kalimat Quote di Halaman Utama
 quote: "Building scalable applications, securing infrastructure, and orchestrating data from behind the scenes."
@@ -25,13 +25,13 @@ social_links:
     url: "https://www.instagram.com/muqtadahasby/"
 
 # File CV untuk didownload
-cv_download_url: "https://gjjdvuotkuexfzcqgduy.supabase.co/storage/v1/object/public/Profile/Muqtada_Hasby_Abdalla_CV.pdf"
+cv_download_url: "https://drive.google.com/file/d/1eN3jM4gXzVLgGNCXeKzAlmIcQQryQdpf/view?usp=drive_link"
+cv_resume_download_url: "https://drive.google.com/file/d/1OmPpDpBE2DCTZf4bEqXfO3Ymqortwnwn/view?usp=sharing"
 
 # ==========================================
 # SECTION: ABOUT ME (Yang Tadi Kamu Bingung)
 # ==========================================
 about_me:
   description: |
-    A final-year Informatics Engineering student at UIN Sunan Gunung Djati Bandung, specializing in backend architecture, cloud infrastructure, and data engineering. His technical foundation is backed by Bangkit Academy (Cloud Computing) and an international certification as a Certified International Specialist in Data Engineering (CISDE) from the PASAS Institute, Singapore.
-    Passionate about solving complex architectural puzzles, he has hands-on experience refactoring monolithic servers into scalable microservices and designing robust ETL pipelines for high-quality data management. Dedicated to continuous growth, he actively contributes to developer communities to refine his collaboration and engineering expertise.
+    Backend, Cloud, and Data Engineer with a strong interest in building reliable backend systems, cloud infrastructure, and data engineering solutions. Proficient in Node.js for REST API development, Google Cloud Platform, Docker, Kubernetes, and SQL/NoSQL databases. Hands-on experience designing ETL pipelines, developing backend services, and building cloud-based systems through academic, freelance, and personal projects. Continuously developing expertise in scalable architecture, data processing, and cloud infrastructure.
 ---

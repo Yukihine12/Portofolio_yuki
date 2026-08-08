@@ -12,7 +12,6 @@ import {
   ChevronRight,
   FileText
 } from 'lucide-react';
-import { supabase } from './supabaseClient';
 import fallbackProfile from './fallbacks/profile.json';
 import fallbackSkills from './fallbacks/skills.json';
 import fallbackEducation from './fallbacks/education.json';
@@ -76,55 +75,38 @@ function App() {
   const [activeTab, setActiveTab] = useState('skills');
   const [selectedCert, setSelectedCert] = useState(null);
 
-  // Fetch compiled data
-  // Fetch compiled data from Supabase, with local JSON fallback
+  // Fetch compiled data from Express BE or local JSON fallbacks
   useEffect(() => {
     const fetchData = async () => {
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-      if (!supabaseUrl || !supabaseAnonKey) {
-        console.warn('Supabase credentials not found. Falling back to local JSON data.');
-        setPortfolioData({
-          profile: fallbackProfile,
-          skills: fallbackSkills,
-          education: fallbackEducation,
-          certifications: fallbackCertifications,
-          experience: fallbackExperience,
-          projects: fallbackProjects
-        });
-        setLoading(false);
-        return;
-      }
+      const defaultData = {
+        profile: fallbackProfile,
+        skills: fallbackSkills,
+        education: fallbackEducation,
+        certifications: fallbackCertifications,
+        experience: fallbackExperience,
+        projects: fallbackProjects
+      };
 
       try {
-        const { data, error } = await supabase
-          .from('Portfolio_data')
-          .select('*');
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000);
 
-        if (error) throw error;
-
-        if (!data || data.length === 0) {
-          throw new Error('No data found in Portfolio_data table.');
-        }
-
-        const formattedData = data.reduce((acc, curr) => {
-          acc[curr.key] = curr.value;
-          return acc;
-        }, {});
-
-        setPortfolioData(formattedData);
-        setLoading(false);
-      } catch (err) {
-        console.error('Supabase fetch failed, falling back to local JSON:', err);
-        setPortfolioData({
-          profile: fallbackProfile,
-          skills: fallbackSkills,
-          education: fallbackEducation,
-          certifications: fallbackCertifications,
-          experience: fallbackExperience,
-          projects: fallbackProjects
+        const res = await fetch('http://localhost:5000/api/portfolio-data', {
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
+
+        if (!res.ok) throw new Error('Failed to fetch from backend API');
+        const json = await res.json();
+
+        if (json.success && json.data) {
+          setPortfolioData(json.data);
+        } else {
+          setPortfolioData(defaultData);
+        }
+      } catch (err) {
+        setPortfolioData(defaultData);
+      } finally {
         setLoading(false);
       }
     };
@@ -293,11 +275,18 @@ function App() {
       <section className="about-section glass-card">
         <h2 className="section-title gradient-accent-text">About Me</h2>
         <p className="about-desc">{profile.about_me?.description}</p>
-        {profile.cv_download_url && (
-          <a href={profile.cv_download_url} target="_blank" rel="noreferrer" className="btn-primary">
-            <Download size={18} /> Download CV
-          </a>
-        )}
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          {profile.cv_download_url && (
+            <a href={profile.cv_download_url} target="_blank" rel="noreferrer" className="btn-primary">
+              <Download size={18} /> Download CV (ATS)
+            </a>
+          )}
+          {profile.cv_resume_download_url && (
+            <a href={profile.cv_resume_download_url} target="_blank" rel="noreferrer" className="btn-primary" style={{ background: 'rgba(59, 130, 246, 0.2)', border: '1px solid var(--accent-blue)' }}>
+              <Download size={18} /> Download Resume
+            </a>
+          )}
+        </div>
       </section>
 
       {/* 🏷️ TABS NAVIGATION */}
